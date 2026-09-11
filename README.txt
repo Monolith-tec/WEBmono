@@ -26,3 +26,10 @@ NOTA:
 El SEO puede mejorar la capacidad de Google para entender y posicionar el sitio,
 pero ninguna modificación garantiza primeras posiciones. El posicionamiento depende
 también de competencia, contenido, enlaces, experiencia del usuario y tiempo.
+
+
+CAMBIO SOLICITADO:
+Se reemplazó el logo generado por el logo proporcionado por el propietario de MONOLITH.
+- logo-monolith.png: logo usado en la esquina superior izquierda.
+- og-image.png: vista previa social usando el logo proporcionado.
+- favicon.png: icono del sitio basado en el logo proporcionado.
