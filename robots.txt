@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://monolith-client-nine.vercel.app/sitemap.xml
