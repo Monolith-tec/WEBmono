@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Principal -->
+    <title>MONOLITH | Desarrollo Web Profesional en México</title>
+    <meta name="description" content="MONOLITH desarrolla páginas web profesionales de alto impacto para empresas y negocios en México. Solidez, velocidad y conversión de clientes. Proyectos desde $4,000 MXN.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="MONOLITH">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        brutalist: ['Syne', 'sans-serif'],
+                        monolith: ['Cinzel', 'serif'],
+                        formal: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        monodark: '#0f172a',
+                        monogray: '#475569',
+                        monosilver: '#94a3b8',
+                        monolight: '#f8fafc',
+                        monopure: '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos base con tema limpio y brillante */
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Cursor con resplandor sutil */
+        #custom-cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 32px;
+            height: 32px;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(15, 23, 42, 0.15) 0%, rgba(148, 163, 184, 0.05) 70%, rgba(0,0,0,0) 100%);
+            border: 1px solid rgba(15, 23, 42, 0.2);
+            transition: width 0.15s ease, height 0.15s ease, transform 0.05s ease-out;
+            will-change: transform;
+        }
+
+        /* Paisaje Real VIVO y Nítido de Montañas y Monolitos */
+       .hero-landscape-bg {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.08) 100%), 
+                      url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2400&q=100');
+    background-size: cover;
+    background-position: center 35%;
+    background-repeat: no-repeat;
+    filter: contrast(120%) brightness(105%) saturate(125%);
+}
+
+        /* Tarjetas Escultóricas con cristal sutil */
+        .sculptural-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.06);
+            border-radius: 1.25rem;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sculptural-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.14);
+            transform: translateY(-4px);
+        }
+
+        /* Gradientes de Texto */
+        .text-gradient-monolith {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animación de Entrada y Difuminado por Scroll */
+        .fade-element {
+            opacity: 0;
+            transform: translateY(20px);
+            filter: blur(4px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s ease-out;
+            will-change: opacity, transform, filter;
+        }
+
+        .fade-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0px);
+        }
+
+        /* Ocultar barra de scroll en slider horizontal */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Bisel de laptop de contacto */
+        .laptop-bezel {
+            background: #0f172a;
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+        }
+
+        /* Línea de progreso de Scroll con Punto */
+        .scroll-track {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            background-color: #cbd5e1;
+        }
+        .scroll-dot {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            width: 10px;
+            height: 10px;
+            background-color: #0f172a;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: left 0.08s linear;
+            box-shadow: 0 0 8px rgba(15, 23, 42, 0.4);
+        }
+    </style>
+</head>
+<body class="selection:bg-slate-900 selection:text-white relative">
+
+    <!-- Círculo de Luz Suave que sigue al Cursor -->
+    <div id="custom-cursor-glow"></div>
+
+    <!-- NAVEGACIÓN FIJA CON LOGO VECTORIAL OFICIAL EN ALTA DEFINICIÓN -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-3 flex justify-between items-center backdrop-blur-md bg-white/90 border-b border-slate-200/80 shadow-sm transition-all duration-300">
+        
+        <!-- Logo MONOLITH en SVG Vectorial (Imposible que falle o se rompa) -->
+        <a href="#hero" class="flex items-center hover:opacity-90 transition-opacity p-1.5 rounded-xl bg-black" aria-label="MONOLITH - Inicio">
+            <img src="logo.png" alt="MONOLITH - Solidez en cada web" class="h-10 sm:h-12 w-auto object-contain">
+        </a>
+
+        <!-- Botones de Redes Sociales (Instagram y WhatsApp únicamente) -->
+        <div class="flex items-center space-x-2 sm:space-x-3 text-slate-700">
+            <a href="https://www.instagram.com/mon_olith_?stkn=ZGQxdXU4MHN0M3ps" target="_blank" rel="noopener noreferrer" 
+               aria-label="Instagram de MONOLITH" 
+               class="flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-900 hover:text-white transition-all duration-300 border border-slate-200/80 text-xs font-semibold shadow-sm group">
+                <i class="fa-brands fa-instagram text-sm text-pink-500 group-hover:text-white group-hover:scale-110 transition-transform"></i>
+                <span class="hidden sm:inline">Instagram</span>
+            </a>
+
+            <a href="https://wa.me/message/SIHCFMHGFPZKO1" target="_blank" rel="noopener noreferrer" 
+               aria-label="WhatsApp de MONOLITH" 
+               class="flex items-center space-x-2 px-4 py-2 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white transition-all duration-300 text-xs font-bold shadow-md hover:shadow-emerald-600/30">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>Cotizar</span>
+            </a>
+        </div>
+    </header>
+
+    <main id="main-content" class="relative z-10 pt-20">
+
+        <!-- SECCIÓN 1: HERO CON PAISAJE REAL DE MONTAÑAS Y MONOLITOS -->
+        <section id="hero" class="relative min-h-[85vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden border-b border-slate-200/80 hero-landscape-bg">
+
+            <div class="relative z-10 max-w-5xl mx-auto space-y-6 px-2 py-16 sm:py-24 fade-element">
+                <!-- Badge de ubicación y certificación -->
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/95 border border-slate-300 shadow-sm text-xs font-bold tracking-widest text-slate-800 uppercase font-formal backdrop-blur-md">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Desarrollo Web Profesional en México</span>
+                </div>
+
+                <!-- Título Principal de Monolith de Ajuste Perfecto -->
+                <div class="py-1 max-w-full overflow-hidden">
+                    <h1 class="font-brutalist font-black text-4xl sm:text-7xl md:text-8xl tracking-tight text-gradient-monolith uppercase drop-shadow-md leading-none">
+                        MONOLITH
+                    </h1>
+                </div>
+
+                <!-- Eslogan Subtítulo -->
+                <p class="font-monolith text-base sm:text-2xl md:text-3xl text-slate-900 tracking-[0.2em] sm:tracking-[0.3em] font-bold uppercase drop-shadow-sm">
+                    SOLIDEZ EN CADA WEB
+                </p>
+
+                <!-- Descripción concisa -->
+                <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-slate-800 leading-relaxed font-formal font-medium bg-white/60 p-4 rounded-xl backdrop-blur-sm border border-white/80 shadow-sm">
+                    Transformamos negocios en infraestructuras digitales sólidas. Diseños web de alto nivel, rendimiento impecable y automatización pensada para captar clientes constantemente.
+                </p>
+
+                <!-- Botones de Acción CTA -->
+                <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="https://wa.me/message/SIHCFMHGFPZKO1" target="_blank" rel="noopener noreferrer" 
+                       class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 text-white font-formal font-bold text-sm tracking-wide shadow-xl hover:bg-slate-800 transition-all duration-300 flex items-center justify-center space-x-3 group">
+                        <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+                        <span>Iniciar Proyecto por WhatsApp</span>
+                        <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    
+                    <a href="#proyectos" 
+                       class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-300 font-formal font-bold text-sm tracking-wide shadow-md transition-all duration-300 flex items-center justify-center space-x-2">
+                        <span>Ver Portafolio de Proyectos</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-500"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: PROYECTOS REALIZADOS (CARRUSEL HORIZONTAL CON LÍNEA, PUNTO Y BOTÓN COTIZAR) -->
+        <section id="proyectos" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto border-b border-slate-200/80">
+            <div class="fade-element space-y-4 text-center md:text-left mb-10 flex flex-col md:flex-row md:items-end justify-between">
+                <div>
+                    <span class="text-xs font-bold tracking-widest uppercase text-slate-500 font-formal block mb-1">
+                        Casos de Éxito & Portafolio
+                    </span>
+                    <h2 class="font-brutalist text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+                        Proyectos Que He Hecho
+                    </h2>
+                    <p class="font-formal text-slate-600 text-sm sm:text-base mt-2 max-w-xl">
+                        Explora los sitios web desarrollados por MONOLITH. Haz clic en cualquiera para visitar la plataforma en vivo.
+                    </p>
+                </div>
+
+                <!-- Botones de desplazamiento manual -->
+                <div class="flex items-center justify-center md:justify-end space-x-3 pt-4 md:pt-0">
+                    <button id="slide-left" aria-label="Anterior proyecto" class="w-11 h-11 rounded-full bg-white border border-slate-300 text-slate-800 flex items-center justify-center shadow-md hover:bg-slate-900 hover:text-white transition-colors">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button id="slide-right" aria-label="Siguiente proyecto" class="w-11 h-11 rounded-full bg-white border border-slate-300 text-slate-800 flex items-center justify-center shadow-md hover:bg-slate-900 hover:text-white transition-colors">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONTENEDOR HORIZONTAL SCROLL CON 5 PROYECTOS CON PORTADAS GARANTIZADAS -->
+            <div id="projects-slider" class="fade-element flex space-x-6 overflow-x-auto no-scrollbar pb-6 pt-2 scroll-smooth px-2">
+
+                <!-- PROYECTO 1: Logística Kronos -->
+                <div class="min-w-[300px] sm:min-w-[420px] md:min-w-[480px] flex-shrink-0 sculptural-card overflow-hidden group">
+                    <a href="https://logistica-nine-mu.vercel.app/" target="_blank" class="project-card flex-shrink-0 w-[340px] sm:w-[420px] bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                        <div class="h-60 overflow-hidden relative bg-slate-100">
+                        <img src="kronosp1_log.png" alt="Logística Kronos" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </a>
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold tracking-wider uppercase text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200/60">
+                                Logística B2B & Transporte
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono">2026</span>
+                        </div>
+                        <h3 class="font-brutalist text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">
+                            Logística Kronos
+                        </h3>
+                        <p class="font-formal text-xs text-slate-600 leading-relaxed">
+                            Plataforma corporativa industrial de alta precisión para transporte sobredimensionado y cotizaciones en tiempo real.
+                        </p>
+                        <div class="pt-2 flex items-center justify-between border-t border-slate-100 text-xs">
+                            <a href="https://logistica-nine-mu.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-900 hover:underline flex items-center space-x-1">
+                                <span>logistica-nine-mu.vercel.app</span>
+                                <i class="fa-solid fa-link text-[10px] text-slate-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 2: Valtier Inmobiliaria -->
+                <div class="min-w-[300px] sm:min-w-[420px] md:min-w-[480px] flex-shrink-0 sculptural-card overflow-hidden group">
+                    <a href="https://inmobiliaria-s1zp.vercel.app/" target="_blank" class="project-card flex-shrink-0 w-[340px] sm:w-[420px] bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                        <div class="h-60 overflow-hidden relative bg-slate-100">
+                        <img src="valtierp2_inm.png" alt="Valtier Inmobiliaria" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </a>
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold tracking-wider uppercase text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
+                                Bienes Raíces & Patrimonio
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono">2026</span>
+                        </div>
+                        <h3 class="font-brutalist text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">
+                            Valtier Propiedades
+                        </h3>
+                        <p class="font-formal text-xs text-slate-600 leading-relaxed">
+                            Portal inmobiliario exclusivo para residencias de autor y patrimonio con simulador financiero integrado.
+                        </p>
+                        <div class="pt-2 flex items-center justify-between border-t border-slate-100 text-xs">
+                            <a href="https://inmobiliaria-s1zp.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-900 hover:underline flex items-center space-x-1">
+                                <span>inmobiliaria-s1zp.vercel.app</span>
+                                <i class="fa-solid fa-link text-[10px] text-slate-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 3: Vanguardia Firma Legal -->
+                <div class="min-w-[300px] sm:min-w-[420px] md:min-w-[480px] flex-shrink-0 sculptural-card overflow-hidden group">
+                    <a href="https://firmaabo.vercel.app/" target="_blank" class="project-card flex-shrink-0 w-[340px] sm:w-[420px] bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                        <div class="h-60 overflow-hidden relative bg-slate-100">
+                        <img src="vanguardiap3_fir.png" alt="Vanguardia Firma Legal" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </a>
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold tracking-wider uppercase text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200/60">
+                                Firma Legal & Corporativa
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono">2026</span>
+                        </div>
+                        <h3 class="font-brutalist text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">
+                            Vanguardia La Firma
+                        </h3>
+                        <p class="font-formal text-xs text-slate-600 leading-relaxed">
+                            Sitio web legal corporativo para defensa jurídica de alto nivel, litigio y protección patrimonial.
+                        </p>
+                        <div class="pt-2 flex items-center justify-between border-t border-slate-100 text-xs">
+                            <a href="https://firmaabo.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-900 hover:underline flex items-center space-x-1">
+                                <span>firmaabo.vercel.app</span>
+                                <i class="fa-solid fa-link text-[10px] text-slate-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 4: Aura & Luxe -->
+                <div class="min-w-[300px] sm:min-w-[420px] md:min-w-[480px] flex-shrink-0 sculptural-card overflow-hidden group">
+                    <a href="https://joyeria-xi.vercel.app/#coleccion" target="_blank" class="project-card flex-shrink-0 w-[340px] sm:w-[420px] bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                        <div class="h-60 overflow-hidden relative bg-slate-100">
+                        <img src="joyeriap4.png" alt="Aura & Luxe" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </a>
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold tracking-wider uppercase text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200/60">
+                                Alta Joyería & Lujo
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono">2026</span>
+                        </div>
+                        <h3 class="font-brutalist text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">
+                            Aura & Luxe
+                        </h3>
+                        <p class="font-formal text-xs text-slate-600 leading-relaxed">
+                            Catálogo interactivo de alta joaillerie con experiencia visual inmersiva para piezas exclusivas de autor.
+                        </p>
+                        <div class="pt-2 flex items-center justify-between border-t border-slate-100 text-xs">
+                            <a href="https://joyeria-xi.vercel.app/#coleccion" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-900 hover:underline flex items-center space-x-1">
+                                <span>joyeria-xi.vercel.app</span>
+                                <i class="fa-solid fa-link text-[10px] text-slate-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 5: La Casona de Ana -->
+                <div class="min-w-[300px] sm:min-w-[420px] md:min-w-[480px] flex-shrink-0 sculptural-card overflow-hidden group">
+                    <a href="https://restaurant-lime-ten.vercel.app/" target="_blank" class="project-card flex-shrink-0 w-[340px] sm:w-[420px] bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                        <div class="h-60 overflow-hidden relative bg-slate-100">
+                        <img src="restaurantep5.png" alt="La Casona de Ana" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </a>
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold tracking-wider uppercase text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200/60">
+                                Gastronomía & Catering B2B
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono">2026</span>
+                        </div>
+                        <h3 class="font-brutalist text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">
+                            La Casona de Ana
+                        </h3>
+                        <p class="font-formal text-xs text-slate-600 leading-relaxed">
+                            Web corporativa para servicios de catering y banquetes corporativos con cotizador interactivo.
+                        </p>
+                        <div class="pt-2 flex items-center justify-between border-t border-slate-100 text-xs">
+                            <a href="https://restaurant-lime-ten.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-900 hover:underline flex items-center space-x-1">
+                                <span>restaurant-lime-ten.vercel.app</span>
+                                <i class="fa-solid fa-link text-[10px] text-slate-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BARRA DE PROGRESO DE SCROLL CON LÍNEA Y PUNTO + BOTÓN COTIZA EL TUYO -->
+            <div class="mt-8 px-2 max-w-7xl mx-auto space-y-8">
+                <div class="scroll-track">
+                    <div id="scroll-dot" class="scroll-dot"></div>
+                </div>
+
+                <!-- Botón CTA tipo píldora solicitado -->
+                <div class="pt-2 text-left">
+                    <a href="https://wa.me/message/SIHCFMHGFPZKO1" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center space-x-3 px-8 py-3.5 rounded-full border-2 border-slate-900 bg-slate-900 text-white font-formal text-xs font-bold uppercase tracking-widest hover:bg-slate-800 hover:border-slate-800 transition-all duration-300 shadow-md group">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 text-base"></i>
+                        <span>COTIZA EL TUYO</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: LA PROMESA MONOLITH -->
+        <section id="promise" class="py-24 px-6 max-w-4xl mx-auto border-b border-slate-200/80">
+            <div class="fade-element sculptural-card p-8 sm:p-14 text-center relative overflow-hidden bg-gradient-to-b from-white to-slate-50/50">
+                <div class="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-slate-300"></div>
+                <div class="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-slate-300"></div>
+
+                <div class="relative z-10 space-y-6">
+                    <i class="fa-solid fa-quote-left text-3xl text-slate-300"></i>
+                    
+                    <h2 class="font-formal text-xl sm:text-2xl md:text-3xl font-medium leading-relaxed text-slate-800">
+                        "Creamos sitios web para empresas, para que tengan <span class="text-slate-950 font-bold underline decoration-slate-400 underline-offset-8">más alcance</span> y por ende más clientes, para ahorrar tiempo automatizando procesos, <span class="text-slate-950 font-bold">el tiempo es oro</span> y con nosotros puedes aprovecharlo."
+                    </h2>
+
+                    <div class="pt-4 flex justify-center items-center space-x-3 text-xs tracking-widest text-slate-500 font-formal uppercase font-semibold">
+                        <span class="w-8 h-px bg-slate-300"></span>
+                        <span>Optimización & Automatización Digital</span>
+                        <span class="w-8 h-px bg-slate-300"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: SERVICIOS Y ENTREGABLES CERTIFICADOS -->
+        <section id="services" class="py-24 px-6 max-w-4xl mx-auto border-b border-slate-200/80">
+            <div class="fade-element sculptural-card p-8 sm:p-12 relative">
+                <div class="space-y-8">
+                    <!-- Encabezado -->
+                    <div class="border-b border-slate-200 pb-6 text-left">
+                        <span class="text-xs font-bold font-formal tracking-widest uppercase text-slate-500 block mb-1">
+                            Estándares Web Profesionales
+                        </span>
+                        <h2 class="font-monolith text-2xl sm:text-3xl md:text-4xl text-slate-900 font-extrabold tracking-wide">
+                            Certificados en HTML y CSS
+                        </h2>
+                        <p class="font-formal text-sm text-slate-600 mt-1 italic">
+                            Desarrollos a la medida sin plantillas pesadas: rendimiento rápido y código limpio.
+                        </p>
+                    </div>
+
+                    <!-- Banner de Inversión -->
+                    <div class="flex items-center justify-between bg-slate-900 text-white rounded-2xl p-5 sm:p-6 shadow-xl">
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block font-medium">Inversión Transparente</span>
+                            <span class="font-brutalist text-2xl sm:text-3xl font-extrabold text-white">Precios desde $4,000 MXN</span>
+                        </div>
+                        <div class="hidden sm:block text-right text-xs text-slate-300">
+                            <span>Proyecto entregado</span><br>
+                            <span class="text-emerald-400 font-bold">Llave en mano</span>
+                        </div>
+                    </div>
+
+                    <!-- Entregables incluidos -->
+                    <div class="space-y-4">
+                        <h3 class="font-formal text-xs font-bold tracking-widest text-slate-500 uppercase">
+                            Te entregamos tu plataforma totalmente lista para operar:
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-formal text-sm text-slate-700">
+                            <div class="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-400 transition-colors">
+                                <i class="fa-solid fa-certificate text-slate-800 mt-1 text-base"></i>
+                                <div>
+                                    <strong class="text-slate-900 block">Certificado de autenticidad</strong>
+                                    <span class="text-xs text-slate-500">Garantía de código original, optimizado y limpio.</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-400 transition-colors">
+                                <i class="fa-solid fa-book text-slate-800 mt-1 text-base"></i>
+                                <div>
+                                    <strong class="text-slate-900 block">Manual de usuario</strong>
+                                    <span class="text-xs text-slate-500">Guía clara para administrar tu presencia digital.</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-400 transition-colors">
+                                <i class="fa-solid fa-code text-slate-800 mt-1 text-base"></i>
+                                <div>
+                                    <strong class="text-slate-900 block">Manual técnico</strong>
+                                    <span class="text-xs text-slate-500">Documentación de la estructura del sitio web.</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-400 transition-colors">
+                                <i class="fa-solid fa-key text-slate-800 mt-1 text-base"></i>
+                                <div>
+                                    <strong class="text-slate-900 block">Correo y contraseñas</strong>
+                                    <span class="text-xs text-slate-500">Propiedad total de tus credenciales y accesos.</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-400 transition-colors">
+                                <i class="fa-solid fa-server text-slate-800 mt-1 text-base"></i>
+                                <div>
+                                    <strong class="text-slate-900 block">Hosting y gestión técnica</strong>
+                                    <span class="text-xs text-slate-500">Nos encargamos del servidor y la infraestructura.</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-400 transition-colors">
+                                <i class="fa-solid fa-link text-slate-800 mt-1 text-base"></i>
+                                <div>
+                                    <strong class="text-slate-900 block">Enlace web listo</strong>
+                                    <span class="text-xs text-slate-500">Tu nuevo link oficial listo para publicar.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Cotización -->
+                    <div class="pt-4">
+                        <a href="https://wa.me/message/SIHCFMHGFPZKO1" target="_blank" rel="noopener noreferrer" 
+                           class="w-full inline-flex justify-center items-center space-x-3 py-4 px-8 rounded-xl bg-slate-900 text-white font-formal font-bold text-base hover:bg-slate-800 transition-all duration-300 shadow-lg group">
+                            <i class="fa-brands fa-whatsapp text-xl text-emerald-400"></i>
+                            <span>Solicitar Cotización por WhatsApp</span>
+                            <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: PREGUNTAS FRECUENTES (FAQ) -->
+        <section id="faq" class="py-24 px-6 max-w-4xl mx-auto border-b border-slate-200/80" aria-labelledby="faq-title">
+            <div class="fade-element sculptural-card p-8 sm:p-12">
+                <div class="space-y-8">
+                    <div class="border-b border-slate-200 pb-6">
+                        <span class="text-xs font-bold font-formal tracking-widest uppercase text-slate-500">
+                            Preguntas Frecuentes
+                        </span>
+                        <h2 id="faq-title" class="font-brutalist text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">
+                            Desarrollo Web en México
+                        </h2>
+                        <p class="font-formal text-sm text-slate-600 mt-2">
+                            Respuestas clave para iniciar tu proyecto con MONOLITH.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 font-formal">
+                        <details class="group bg-white border border-slate-200 rounded-xl p-5 transition-all">
+                            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 text-slate-900 font-bold">
+                                ¿Cuánto cuesta una página web profesional?
+                                <span class="text-slate-400 group-open:rotate-45 transition-transform text-xl">+</span>
+                            </summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-3">
+                                En MONOLITH desarrollamos proyectos a partir de $4,000 MXN. El costo final varía de acuerdo con el alcance, secciones y módulos personalizados que requiera tu empresa.
+                            </p>
+                        </details>
+
+                        <details class="group bg-white border border-slate-200 rounded-xl p-5 transition-all">
+                            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 text-slate-900 font-bold">
+                                ¿Hacen páginas web para todo tipo de empresas?
+                                <span class="text-slate-400 group-open:rotate-45 transition-transform text-xl">+</span>
+                            </summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-3">
+                                Sí. Creamos sitios web corporativos, catálogos, firmas de servicios, gastronomía y soluciones a medida enfocadas en captar clientes y fortalecer marcas.
+                            </p>
+                        </details>
+
+                        <details class="group bg-white border border-slate-200 rounded-xl p-5 transition-all">
+                            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 text-slate-900 font-bold">
+                                ¿Incluyen hosting y soporte?
+                                <span class="text-slate-400 group-open:rotate-45 transition-transform text-xl">+</span>
+                            </summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-3">
+                                Nos encargamos de toda la configuración técnica, alojamiento web y puesta a punto en vivo para que no tengas complicaciones.
+                            </p>
+                        </details>
+
+                        <details class="group bg-white border border-slate-200 rounded-xl p-5 transition-all">
+                            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 text-slate-900 font-bold">
+                                ¿Atienden clientes en todo México?
+                                <span class="text-slate-400 group-open:rotate-45 transition-transform text-xl">+</span>
+                            </summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-3">
+                                Así es. Colaboramos de forma digital y coordinada con negocios de toda la República Mexicana.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: CANALES DE CONTACTO (MOCKUP LAPTOP) -->
+        <section id="contacto" class="py-24 px-4 max-w-4xl mx-auto text-center">
+            <div class="fade-element space-y-8">
+                <div class="space-y-2">
+                    <span class="text-xs font-bold font-formal tracking-widest uppercase text-slate-500">Punto de Contacto Directo</span>
+                    <h2 class="font-brutalist text-3xl sm:text-5xl font-black text-slate-900">
+                        CONÉCTATE CON MONOLITH
+                    </h2>
+                    <p class="text-slate-600 text-sm max-w-md mx-auto font-formal">
+                        Haz clic en nuestros canales oficiales para cotizar e iniciar tu proyecto web hoy mismo.
+                    </p>
+                </div>
+
+                <!-- Mockup de Laptop -->
+                <div class="relative mx-auto max-w-2xl w-full px-2 pt-4">
+                    <div class="laptop-bezel rounded-t-2xl p-4 sm:p-6 shadow-2xl relative overflow-hidden">
+                        <div class="w-2.5 h-2.5 bg-slate-700 rounded-full mx-auto mb-4 border border-slate-600"></div>
+                        
+                        <div class="bg-slate-950 border border-slate-800 rounded-lg p-6 sm:p-10 flex flex-col justify-center items-center space-y-6 shadow-inner min-h-[260px] text-white">
+                            
+                            <div class="text-center">
+                                <h3 class="font-monolith font-extrabold text-2xl sm:text-3xl tracking-wider text-white">
+                                    MONOLITH
+                                </h3>
+                                <p class="text-xs text-slate-400 font-formal tracking-widest uppercase mt-1">
+                                    Canales de Atención Oficial
+                                </p>
+                            </div>
+
+                            <!-- Botones en la Pantalla de la Laptop (Instagram & WhatsApp) -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-sm">
+                                <a href="https://www.instagram.com/mon_olith_?stkn=ZGQxdXU4MHN0M3ps" target="_blank" rel="noopener noreferrer" 
+                                   class="flex items-center justify-center space-x-3 py-3 px-5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 hover:text-white hover:bg-slate-800 hover:border-slate-500 transition-all duration-300 group">
+                                    <i class="fa-brands fa-instagram text-xl text-pink-400 group-hover:scale-110 transition-transform"></i>
+                                    <span class="font-formal text-xs font-bold">Instagram</span>
+                                </a>
+
+                                <a href="https://wa.me/message/SIHCFMHGFPZKO1" target="_blank" rel="noopener noreferrer" 
+                                   class="flex items-center justify-center space-x-3 py-3 px-5 rounded-lg bg-emerald-950 border border-emerald-700 text-emerald-200 hover:text-white hover:bg-emerald-900 transition-all duration-300 group">
+                                    <i class="fa-brands fa-whatsapp text-xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                                    <span class="font-formal text-xs font-bold">WhatsApp</span>
+                                </a>
+                            </div>
+
+                            <p class="text-[11px] text-slate-400 font-mono tracking-wide">
+                                Ciudad de México, México
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-300 h-4 rounded-b-xl border-t border-slate-400 relative flex justify-center items-center shadow-xl">
+                        <div class="w-16 h-1.5 bg-slate-400 rounded-b"></div>
+                    </div>
+                    <div class="w-full h-6 bg-slate-900/10 blur-md rounded-full -mt-1"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA FOOTER CON LOGO INTEGRADO -->
+    <footer class="relative z-10 border-t border-slate-200 bg-white py-10 text-center text-xs text-slate-500 font-formal">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3 bg-black px-3 py-1.5 rounded-md border border-slate-800">
+                <svg class="h-6 w-auto text-white" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 15H35L52 50L69 15H89V65H73V32L58 65H46L31 32V65H15V15Z" fill="white"/>
+                    <text x="100" y="48" font-family="'Cinzel', serif" font-weight="900" font-size="32" fill="white" letter-spacing="2">MONOLITH</text>
+                </svg>
+            </div>
+            <p>&copy; 2026 MONOLITH. Todos los derechos reservados. México.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE INTERACCIÓN Y RENDERIZADO -->
+    <script>
+        // Cursor con seguimiento fluido
+        const cursorGlow = document.getElementById('custom-cursor-glow');
+        window.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        }, { passive: true });
+
+        // Control del Slider Horizontal e Indicador con Punto
+        const slider = document.getElementById('projects-slider');
+        const scrollDot = document.getElementById('scroll-dot');
+
+        function updateScrollProgress() {
+            const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+            if (maxScrollLeft > 0) {
+                const percentage = (slider.scrollLeft / maxScrollLeft) * 100;
+                scrollDot.style.left = `${Math.min(Math.max(percentage, 0), 100)}%`;
+            } else {
+                scrollDot.style.left = '0%';
+            }
+        }
+
+        slider.addEventListener('scroll', updateScrollProgress, { passive: true });
+        window.addEventListener('resize', updateScrollProgress, { passive: true });
+
+        document.getElementById('slide-left').addEventListener('click', () => {
+            slider.scrollBy({ left: -420, behavior: 'smooth' });
+        });
+        document.getElementById('slide-right').addEventListener('click', () => {
+            slider.scrollBy({ left: 420, behavior: 'smooth' });
+        });
+
+        // Observador de Scroll para animación suave (Fade-in)
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.08
+        });
+
+        document.querySelectorAll('.fade-element').forEach(el => {
+            fadeObserver.observe(el);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateScrollProgress();
+        });
+    </script>
+</body>
+</html>
